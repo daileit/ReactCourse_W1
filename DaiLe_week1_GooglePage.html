@@ -1,0 +1,320 @@
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    header {
+        width: 100%;
+        font-size: small;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    /* NAV BAR */
+    #nav_bar {
+        float: right;
+    }
+
+        #nav_bar li {
+            display: inline-block;
+            padding: 8px;
+        }
+
+        #nav_bar #sign_in {
+            background: #4887ef;
+            margin-right: 25px;
+            padding: 7px 15px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+    .nav-links {
+        color: #404040;
+    }
+
+
+
+    li.nav-links a:hover {
+        text-decoration: underline;
+    }
+
+    #sign_in:hover {
+        box-shadow: 1px 1px 5px #999;
+    }
+
+    #sign_in a {
+        color: #fff;
+    }
+
+    /* GOOGLE AREA */
+    .google #google_logo {
+        text-align: center;
+        
+        display: block;
+        margin: 0 auto;
+        clear: both;
+        padding-top: 152px;
+        padding-bottom: 30px;
+    }
+
+    .form {
+        text-align: center;
+    }
+
+    #form-search {
+        border-radius: 25px;
+        width: 550px;
+        line-height: 32px;
+        padding: 50px 10px;
+    }
+
+    .form #form-search {
+        border-radius: 25px;
+        padding: 5px 20px 5px 20px;
+    }
+
+    /*#form-search:hover {
+      border-color: #e4e4e4;
+      padding-top: 0;
+    }*/
+
+    .buttons {
+        text-align: center;
+        padding-top: 10px;
+    }
+
+    /* FOOTER */
+    footer {
+        background: #f2f2f2;
+        border-top: solid 2px #e4e4e4;
+        /*   position: fixed; */
+        bottom: 0;
+        padding-bottom: 0;
+        width: 100%;
+        height:50px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+        footer ul li {
+            display: inline;
+            color: #666666;
+            font-size: 14px;
+            padding: 13px;
+        }
+
+        footer ul {
+            float: left;
+            padding: 1px;
+        }
+
+            footer ul a:hover {
+                text-decoration: underline;
+            }
+
+    .footer-right {
+        float: right;
+    }
+
+    /* MEDIA QUERIES */
+
+
+
+
+
+    #output-pages {
+        font-size: small;
+        margin-bottom: 150px;
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    #output {
+        text-align: center;
+        display: inline-block;
+        line-height: 28px;
+    }
+
+        #output a {
+            text-align: center;
+            color: #1a0dab;
+            padding: 0 3px;
+        }
+
+    a {
+        color: #5f6368;
+        text-decoration: none;
+    }
+    .submit{
+        height: 36px;
+        line-height: 27px;
+        background-color: #f2f2f2;
+        border: 1px solid #f2f2f2;
+        border-radius: 4px;
+        color: #5F6368;
+        cursor: pointer;
+        font-family: arial,sans-serif;
+        font-size: 14px;
+        margin: 11px 4px;
+        min-width: 54px;
+        padding: 0 16px;
+        text-align: center;
+    }
+    .submit:hover
+    {
+        border: 1px solid #999;
+        color: #404040;
+    }
+    #result
+    {
+        text-align: center;
+        display: inline-block;
+        line-height: 28px;
+    }
+
+</style>
+  <head>
+    <title>Google Homepage</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  </head>
+  
+  <body>
+    <header>
+      <nav>
+        <ul id="nav_bar">
+          <li class="nav-links" id="gmail"><a href="#">Gmail</a></li>
+          <li class="nav-links"><a href="#">Images</a></li>
+          <li id="sign_in"><a href="#">Sign In</a></li>
+        </ul>  
+      </nav>  
+    </header>  
+    
+    <!-- GOOGLE IMG -->  
+    <div class="google">
+      <a href="#" id="google_logo"><img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" height="92" alt=" photo google-logo_zpspkcztsjo.png"/></a>
+    </div>
+    
+    <!-- FORM SEARCH -->  
+    <div class="form">  
+      <form>
+        <label for="form-search"></label>
+        <input type="text" id="form-search" placeholder="Search Google or type URL">
+      </form>
+    </div>  
+    
+    <!-- BUTTONS -->
+    <div class= "buttons">  
+      <input id="submit" class="submit" value="Nhập mảng" readonly="readonly" onclick="mainFunction()">
+      <input id="submit2" class="submit" value="I'm Feeling Lucky" readonly="readonly" onclick="randFuction()">
+    </div>
+	<div id="output-pages" class="output-pages" >
+        <div id="output"> <div id="result">Google offered in:</div> <a href="#">English</a><a href="#">Français</a><a href="#">中文（繁體）</a> </div></div>
+    <!-- FOOTER -->
+    <footer>
+        <ul class="footer-left">
+            <li><a href="#">Advertising</a></li>
+            <li><a href="#">Business</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">How Search works</a></li>
+        </ul>
+        <ul class="footer-right">    
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Settings</a></li>
+        </ul>       
+    </footer>      
+  </body>
+  <script>
+      var subArray;
+      var inputArr;
+      var maxSubArr;
+      function mainFunction() {          
+          if (document.getElementById("submit").value == "Nhập mảng") {
+              inputArr = document.getElementById("form-search").value;
+              var mainArray = Array.from(inputArr.split(",")).map(item => Number(item));
+              maxSubArr = maxSubArray(mainArray);
+              //console.log(maxSubArr.start + "-" + maxSubArr.end);
+              subArray = mainArray.splice(maxSubArr.start);
+              subArray.splice(maxSubArr.end - maxSubArr.start + 1);
+              console.log(subArray);
+              maxSubArr = maxSubArr.sum;
+              document.getElementById("submit").value = "Nhập số";
+          } else {
+              if (document.getElementById("submit").value == "Nhập số") {
+                  document.getElementById("submit").value = "Restart";
+                  document.getElementById("output").style.display = "";
+                  var input = document.getElementById("form-search").value;
+                  if (input < maxSubArr) {
+                      document.getElementById("result").innerHTML = "Số bạn nhập vào là " + input + ", nhỏ hơn tổng mảng con liên tiếp lớn nhất [" + subArray + "] (" + maxSubArr + ")" + " của mảng [" + inputArr + "]";
+                  } else {
+                      if (input > maxSubArr)
+                          document.getElementById("result").innerHTML = "Số bạn nhập vào là " + input + ", lớn hơn tổng mảng con liên tiếp lớn nhất [" + subArray + "] (" + maxSubArr + ")" + " của mảng [" + inputArr + "]";
+                      else document.getElementById("result").innerHTML = "Số bạn nhập vào là " + input + ", bằng tổng mảng con liên tiếp lớn nhất [" + subArray + "] (" + maxSubArr + ")" + " của mảng [" + inputArr + "]";
+                  }
+
+              } else {
+                  document.getElementById("submit").value = "Nhập mảng";
+                  document.getElementById("result").innerHTML = "Google offered in:";
+              }
+
+          }
+          document.getElementById("form-search").value = "";
+      }
+      function randFuction() {
+          if (document.getElementById("submit").value == "Nhập mảng") {
+              var randArr = [];
+              var randLength = Math.floor(Math.random() * 30) + 1;
+              for (var i = 0; i < randLength; i++) {
+                  randArr.push(Math.floor(Math.random() * 100) - 50);
+              }
+              document.getElementById("form-search").value = randArr;
+          } else if (document.getElementById("submit").value == "Nhập số") {
+              document.getElementById("form-search").value = Math.floor(Math.random() * 100) + 1;
+          } else {
+              document.getElementById("submit").value = "Nhập mảng";
+              document.getElementById("result").innerHTML = "Google offered in:";
+              document.getElementById("form-search").value = "";
+          }
+      }
+
+      //var maxSubArray1 = function (arr) {
+
+      //    var curr_max = 0, max_so_far = 0;
+
+      //    for (var i = 0; i < arr.length; i++) {
+      //        curr_max = Math.max(0, curr_max + arr[i]);
+      //        if (curr_max == 0) {
+      //            subArray = "";
+      //        } else subArray += arr[i] + " ";
+      //        console.log(subArray);
+      //        max_so_far = Math.max(curr_max, max_so_far);
+      //        console.log(arr[i] + "-" + curr_max + "-" + max_so_far);
+      //    }
+      //    return max_so_far;
+      //    console.log(subArray);
+      //}
+      const maxSubArray = arr => {
+          const temp = { start: 0, sum: 0 };
+          let result = { start: 0, end: 0, sum: 0 };
+
+          for (let i = 0; i < arr.length; i++) {
+              temp.sum += arr[i];
+
+              if (temp.sum > result.sum) {
+                  result = { start: temp.start, end: i, sum: temp.sum };
+              }
+
+              if (temp.sum < 0) {
+                  temp.sum = 0;
+                  temp.start = i + 1;
+              }
+          }
+          return result;
+      };
+
+  </script>
