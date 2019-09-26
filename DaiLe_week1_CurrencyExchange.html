@@ -1,0 +1,149 @@
+<style>
+    h2
+    {
+        background-color:aquamarine;
+        color:brown;
+        padding:10px;
+    }
+    body
+    {
+        text-align:center;
+        margin-left:300px;
+        margin-right:300px;
+    }
+    #header
+    {
+        
+    }
+    #selectList
+    {
+        color:brown;
+        font-weight:600;
+        font-size:x-large;
+    }
+    #number
+    {
+        font-size:large;
+    }
+    #actionButton
+    {
+        font-size:large;
+    }
+    #result
+    {
+        font-size:x-large;
+    }
+</style>
+<body onload="loadFunction()">
+    <div id="header">
+        <h2 id="title">CURRENCY CONVERTER: USD TO VND</h2>
+    </div>
+    <p>Choose your currency:</p>
+    <!--<div id="group1">
+        <input type="radio" name="curr" value="USD"> USD<br>
+        <input type="radio" name="curr" value="EUR"> EUR <br>
+    </div>-->
+    <div>
+        <select id="selectList" onchange="changeFunction()">
+        </select><br><br>
+    </div>
+    <div>
+        <input type="number" id="number" placeholder="Enter the amount">
+        <button id="actionButton" onClick="mainFunction()">CONVERT CURRENCY</button>
+        <p id="result"></p>
+    </div>
+
+</body>
+<script>
+    var selectedCurr = {"name":"USD", "rate":0 }
+    var ratesList;
+    function loadFunction()
+    {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://api.exchangerate-api.com/v4/latest/VND");
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                ratesList = JSON.parse(xhr.responseText).rates;
+                var selectBox = document.getElementById("selectList");
+                for (i = 0; i < Object.keys(ratesList).length; i++)
+                {
+                    //console.log(Object.values(ratesList)[i]);
+                    if (Object.keys(ratesList)[i] == "USD")
+                    {
+                        selectBox.options.add(new Option("USD", Object.values(ratesList)[i], true));
+                        selectBox.selectedIndex = i;
+                        selectedCurr.name = "USD";
+                        selectedCurr.rate = Object.values(ratesList)[i];
+                    } else selectBox.options.add(new Option(Object.keys(ratesList)[i], Object.values(ratesList)[i], false));                      
+                }
+
+                //console.log(selectBox.options[selectBox.selectedIndex].value);
+            }
+            else {
+                alert("Request failed.  Returned status of " + xhr.status);
+                document.getElementById("result").innerHTML = "LỖI API TẠM THỜI";
+            }
+        };
+        xhr.send();
+
+    }
+    function changeFunction()
+    {
+        var selectBox = document.getElementById("selectList");
+        selectedCurr.name = selectBox.options[selectBox.selectedIndex].label;
+        selectedCurr.rate = selectBox.options[selectBox.selectedIndex].value;
+        document.getElementById("title").innerHTML = "CURRENCY CONVERTER: " + selectedCurr.name + " TO VND";
+        //console.log(selectedCurr.rate);
+    }
+    function mainFunction()
+    {
+        var amount = document.getElementById("number").value;
+        var output = document.getElementById("result");
+        if (amount != "")
+        {
+            output.innerHTML = "<b> RESULT: " + Comma(amount) + " " + selectedCurr.name+ " = " + Comma(Math.round(amount/selectedCurr.rate * 100)/100)  + " VND.</b>" ;
+            output.style.backgroundColor = "white";
+            output.style.color = "green";
+
+        } else
+        {
+            output.innerHTML = "<b>INPUT THE AMOUNT OF MONEY!</b>";
+            output.style.backgroundColor = "red";
+            output.style.color = "yellow";
+        }
+    }
+    function Comma(number0)
+    {        
+        var number0 = "" + number0;
+        var temp = 0;
+        var number = "";
+        var odd = "";
+        for (i = 0; i < number0.length; i++)
+        {
+            if (number0[i] == ".")
+                temp = i;
+        }
+        
+        if (temp == 0) number = number0; else
+        {
+        number = number0.substring(0,temp);
+        odd = number0.substring(temp, number0.length);
+        }
+        
+        console.log(number0 + "=>"+number+ "=>"+temp);
+        if (number.length > 3) {
+        var mod = number.length % 3;
+        var output = (mod > 0 ? (number.substring(0,mod)) : '');
+        for (i=0 ; i < Math.floor(number.length / 3); i++) {
+        if ((mod == 0) && (i == 0))
+        output += number.substring(mod+ 3 * i, mod + 3 * i + 3);
+        else
+        output+= ',' + number.substring(mod + 3 * i, mod + 3 * i + 3);
+        }
+        return (output+odd);
+        }
+        else return number0;
+    }
+
+    
+</script>
