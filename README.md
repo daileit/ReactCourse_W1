@@ -1,4 +1,4 @@
 # ReactCourse_W1
 1. week1_GuessingGame: bài tập làm theo assignment. Tạo trò chơi đoán số random bằng html/css & js có gợi ý sau mỗi lần đoán sai. Cải tiến: tạo game circle, giới hạn số lần đoán và thêm các mức độ khó.
-2. week1_Googlepage: bài tập nâng cao của giảng viên. Tạo giao diện trang chủ của Google. Nhập vào một mảng các số và 1 số tùy ý. Tìm ra mảng con tăng dần có tổng lớn nhất của mảng ban đầu và so sánh tổng mảng con đó với số đã nhập. Cải tiến: Tạo function random cho nút "I'm Feeling Lucky" để tự tạo input ngẫu nhiên (mảng và số) không cần nhập bằng tay.
+2. week1_Googlepage: bài tập nâng cao của giảng viên. Tạo giao diện trang chủ của Google. Nhập vào một mảng các số và 1 số tùy ý. Tìm ra mảng con liên tiếp có tổng lớn nhất của mảng ban đầu và so sánh tổng mảng con đó với số đã nhập. Cải tiến: Tạo function random cho nút "I'm Feeling Lucky" để tự tạo input ngẫu nhiên (mảng và số) không cần nhập bằng tay.
 3. week1_CurrencyExchage: bài nâng cao của lab. Tạo ứng dụng chuyển đổi USD sang VND. Cải tiến: load API tạo danh sách các loại tiền tệ để chọn và chuyển đổi về VND, làm tròn kết quả và thêm hàm chèn dấu "," chia số theo hàng nghìn.
